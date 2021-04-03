@@ -42,6 +42,7 @@ std::vector<AdvancedSetting> GetAdvancedSettingKeys() {
     AdvancedSetting::TorrentFilterArchiveMaxCount,
     AdvancedSetting::TorrentDownloadFileLocation,
     AdvancedSetting::TorrentDownloadUseMagnet,
+    AdvancedSetting::TorrentDownloadCategory
   };
   return keys;
 }
@@ -84,6 +85,8 @@ std::wstring GetAdvancedSettingDescription(const AdvancedSetting key) {
       return L"Torrents / Download path for .torrent files";
     case AdvancedSetting::TorrentDownloadUseMagnet:
       return L"Torrents / Use magnet links if available";
+    case AdvancedSetting::TorrentDownloadCategory:
+      return L"Torrents / qBittorrent Download Category";
   }
 
   return std::wstring{};
@@ -131,6 +134,8 @@ std::wstring GetAdvancedSettingValue(const AdvancedSetting key) {
       return taiga::settings.GetTorrentDownloadFileLocation();
     case AdvancedSetting::TorrentDownloadUseMagnet:
       return bool_to_wstr(taiga::settings.GetTorrentDownloadUseMagnet());
+    case AdvancedSetting::TorrentDownloadCategory:
+      return taiga::settings.GetTorrentDownloadCategory();
   }
 
   return std::wstring{};
@@ -191,6 +196,9 @@ void SetAdvancedSetting(const AdvancedSetting key, const std::wstring& value) {
       break;
     case AdvancedSetting::TorrentDownloadUseMagnet:
       taiga::settings.SetTorrentDownloadUseMagnet(ToBool(value));
+      break;
+    case AdvancedSetting::TorrentDownloadCategory:
+      taiga::settings.SetTorrentDownloadCategory(value);
       break;
   }
 }

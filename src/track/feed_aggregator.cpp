@@ -430,7 +430,7 @@ void Aggregator::HandleFeedDownloadOpen(FeedItem& feed_item,
     return;
 
   const auto app_path = GetTorrentApplicationPath();
-  
+
   if (app_path.empty()) {
     LOGD(L"BitTorrent client path is empty.");
     Execute(file);
@@ -442,6 +442,7 @@ void Aggregator::HandleFeedDownloadOpen(FeedItem& feed_item,
 
   if (taiga::settings.GetTorrentDownloadUseAnimeFolder()) {
     const auto download_path = GetTorrentDownloadPath(feed_item.episode_data);
+    const auto download_category = taiga::settings.GetTorrentDownloadCategory();
     if (!download_path.empty()) {
       const auto app_filename = GetFileName(app_path);
 
@@ -461,6 +462,9 @@ void Aggregator::HandleFeedDownloadOpen(FeedItem& feed_item,
       // qBittorrent
       } else if (InStr(app_filename, L"qbittorrent", 0, true) > -1) {
         parameters = LR"(--save-path="{}" --skip-dialog=true "{}")"_format(download_path, file);
+        if (!download_category.empty()) {
+          parameters = LR"(--category="{}" --save-path="{}" --skip-dialog=true "{}")"_format(download_category, download_path, file);
+        }
 
       // Transmission
       } else if (InStr(app_filename, L"transmission-remote", 0, true) > -1) {

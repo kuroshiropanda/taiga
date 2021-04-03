@@ -1171,6 +1171,14 @@ void Settings::SetTorrentDownloadAppPath(const std::wstring& path) {
   set_value(AppSettingKey::TorrentDownloadAppPath, path);
 }
 
+std::wstring Settings::GetTorrentDownloadCategory() const {
+  return value<std::wstring>(AppSettingKey::TorrentDownloadCategory);
+}
+
+void Settings::SetTorrentDownloadCategory(const std::wstring& category) {
+  set_value(AppSettingKey::TorrentDownloadCategory, category);
+}
+
 std::wstring Settings::GetTorrentDownloadLocation() const {
   return value<std::wstring>(AppSettingKey::TorrentDownloadLocation);
 }

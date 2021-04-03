@@ -286,6 +286,8 @@ public:
   void SetTorrentDownloadAppOpen(const bool enabled);
   std::wstring GetTorrentDownloadAppPath() const;
   void SetTorrentDownloadAppPath(const std::wstring& path);
+  std::wstring GetTorrentDownloadCategory() const;
+  void SetTorrentDownloadCategory(const std::wstring& category);
   std::wstring GetTorrentDownloadLocation() const;
   void SetTorrentDownloadLocation(const std::wstring& path);
   std::wstring GetTorrentDownloadFileLocation() const;
