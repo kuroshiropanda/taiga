@@ -206,6 +206,7 @@ void Settings::InitKeyMap() const {
       {AppSettingKey::TorrentDownloadAppMode, {"rss/torrent/application/mode", track::kTorrentAppDefault}},
       {AppSettingKey::TorrentDownloadAppOpen, {"rss/torrent/application/open", true}},
       {AppSettingKey::TorrentDownloadAppPath, {"rss/torrent/application/path", std::wstring{GetDefaultAppPath(L".torrent", kDefaultTorrentAppPath)}}},
+      {AppSettingKey::TorrentDownloadCategory, {"rss/torrent/options/category", std::wstring{}}},
       {AppSettingKey::TorrentDownloadLocation, {"rss/torrent/options/downloadpath", std::wstring{}}},
       {AppSettingKey::TorrentDownloadFileLocation, {"rss/torrent/options/filedownloadpath", std::wstring{}}},
       {AppSettingKey::TorrentDownloadUseAnimeFolder, {"rss/torrent/options/autosetfolder", true}},
